@@ -1,13 +1,14 @@
 # Title: Week 4 - Calculate this, Computer
 # Author Name: Anh Vo
-# Date: Oct 1, 2020
+# Date: Oct 4, 2020
 # Description: Calculate the Term Grade Point Average (GPA)
 
 # Greet the user
 print("-----------WELCOME TO GPA CALCULATOR----------")
 
 # Ask the user the number of courses taken
-courseNum = int(input("Number of course you take:---> "))
+courseNum = int(input("Number of courses you take:---> "))
+
 # Initialize Total units, total gradePoint of the term
 totalU = 0
 totalGradeP = 0
@@ -15,7 +16,7 @@ totalGradeP = 0
 # Use for loops to ask questions
 for course in range(courseNum):
 #   Ask for Letter grade of each course
-    letterG = input("Letter Grade of course "+ str((course+1))+ ":---> ").upper()
+    letterG = input("\nLetter Grade of course "+ str((course+1))+ ":---> ").upper()
 
 #   Convert letter grade to numerical equivalent
 #   There is a deduction of 0.33 in grades 
@@ -36,17 +37,24 @@ for course in range(courseNum):
     elif letterG in fails:
         numEqui+=0.00
     else:
-        print("Cannot define your letter grade")
+        print("\nCannot define your letter grade")
             
 #   Ask for the Unit of the course
-    unit = int(input("Unit of course " + str((course+1)) +" :---> "))
+    unit = int(input("\nUnit of course " + str((course+1)) +" :---> "))
     totalU += unit
                
 #   Find Grade Point of each course
     gradeP = unit*numEqui
     totalGradeP+=gradeP
     
-# Calculate GPA
+# Calculate GPA, round it to two decimal
 gpa = totalGradeP/totalU
-print("Term Grade Point Average:",round(gpa,2))
+print("\nTerm Grade Point Average:",round(gpa,2))
+
+# Minimum required GPA for continuation
+if gpa < 2.40:
+    print("\nYour GPA is under 2.40, you may be placed on probation within the School.")
+if gpa < 2.0:
+    print("\nIt's required that you must obtain a GPA of 2.00 to fulfill the program requirement.")
+
  
